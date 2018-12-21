@@ -1,6 +1,5 @@
 package com.example.dai.ledcontroller
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -28,18 +27,18 @@ class ColorPickerActivity : AppCompatActivity() {
         port = intent.getStringExtra(StartActivity.INTENT_KEY_PORT)
 
         colorPickerView.addOnColorSelectedListener {
-            val red = Color.red(it).toString()
-            val green = Color.green(it).toString()
-            val blue = Color.blue(it).toString()
+            val red = "%03d".format(Color.red(it))
+            val green = "%03d".format(Color.green(it))
+            val blue = "%03d".format(Color.blue(it))
 
             val hsv = FloatArray(3)
             Color.colorToHSV(it, hsv)
-            val lightness = (hsv[2] * 255).toInt().toString()
+            val lightness = "%03d".format((hsv[2] * 255).toInt())
 
             val led = LED(red, green, blue, lightness)
             val udp = Udp(ip, port.toInt())
             Log.d("sendData", led.getSendData)
-            //udp.udpSend(led.getSendData)
+            udp.udpSend(led.getSendData)
         }
     }
 
@@ -53,7 +52,7 @@ class ColorPickerActivity : AppCompatActivity() {
             R.id.led_off -> {
                 val led = LED(ledOffValueR, ledOffValueG, ledOffValueB, ledOffValueLightness)
                 val udp = Udp(ip, port.toInt())
-                //udp.udpSend(led.getSendData)
+                udp.udpSend(led.getSendData)
             }
         }
         return super.onOptionsItemSelected(item)
