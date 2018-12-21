@@ -1,10 +1,10 @@
 package com.example.dai.ledcontroller
 
+import android.util.Log
+import java.io.UnsupportedEncodingException
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.InetAddress
-import android.util.Log
-import java.io.UnsupportedEncodingException
 
 
 class Udp(private var ip: String, private var port: Int) {

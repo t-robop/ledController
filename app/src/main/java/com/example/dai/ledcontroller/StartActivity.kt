@@ -21,7 +21,7 @@ class StartActivity : AppCompatActivity() {
 
         light_select_button.setOnClickListener {
             val (ip, port) = getPrefUdpSettings()
-            if (ip.isBlank() && port.isBlank()){
+            if (ip.isBlank() && port.isBlank()) {
                 Toast.makeText(this, "IPアドレスとポート番号を設定してください", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, ColorPickerActivity::class.java)
@@ -33,7 +33,7 @@ class StartActivity : AppCompatActivity() {
 
         light_shake_button.setOnClickListener {
             val (ip, port) = getPrefUdpSettings()
-            if (ip.isBlank() && port.isBlank()){
+            if (ip.isBlank() && port.isBlank()) {
                 Toast.makeText(this, "IPアドレスとポート番号を設定してください", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, ShakeActivity::class.java)
